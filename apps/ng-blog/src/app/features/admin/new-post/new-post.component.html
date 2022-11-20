@@ -7,7 +7,7 @@
 
     <div *ngFor="let content of presenter.postBody.controls; let i = index" [formGroup]="presenter.getContentGroup(i)">
       <p>Content {{ i + 1 }}</p>
-      <input type="button" value="Delete content" *ngIf="i != 0" (click)="presenter.removeContent(i)" />
+      <input type="button" value="Delete content" *ngIf="i !== 0" (click)="presenter.removeContent(i)" />
       <ng-container [ngSwitch]="content.value.type">
         <div *ngSwitchCase="ContentType.TEXT">
           <textarea class="hidden-textarea" formControlName="text" placeholder="Text content" (keydown)="expandTextarea($event)">

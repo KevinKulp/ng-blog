@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnChanges } from '@angular/core';
 import type { Post } from '@ng-blog/domain';
 
 @Component({

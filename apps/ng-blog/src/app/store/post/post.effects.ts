@@ -15,7 +15,7 @@ export class PostEffects {
 
       ofType(PostActions.loadPosts),
       withLatestFrom(this.postFacade.posts$),
-      concatMap(([action, posts]) =>{
+      concatMap(([, posts]) =>{
         if (posts.length > 1) {
           return of(PostActions.loadPostsSuccess({ posts }))
         } else {

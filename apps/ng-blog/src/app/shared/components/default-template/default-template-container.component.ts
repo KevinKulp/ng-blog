@@ -19,7 +19,7 @@ export class DefaultTemplateContainerComponent implements OnInit {
       );
 
     // trigger change detection to show/hide spinner
-    this.showSpinner$.subscribe((loading) => {
+    this.showSpinner$.subscribe(() => {
       this.cdr.detectChanges();
     })
 

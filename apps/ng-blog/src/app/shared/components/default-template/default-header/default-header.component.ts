@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -6,11 +6,8 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './default-header.component.html',
   styleUrls: ['./default-header.component.scss']
 })
-export class DefaultHeaderComponent implements OnInit {
+export class DefaultHeaderComponent {
 
   constructor(public route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-  }
 
 }

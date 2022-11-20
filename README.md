@@ -10,6 +10,8 @@ To use the nx command, nx should be installed globally. Alternatively, you can r
 
 By using the nx command instead of ng, we're able to take advantage of some additional capabilities that nx offers including an improved chaching mechanism.
 
+The client and api can be started in parallel by running `nx run-many --all --target=serve`
+
 ## Client
 The client can be started by running `nx serve ng-blog`
 
@@ -26,3 +28,7 @@ When the api runs in production mode `/environments/environment.ts` is replaced 
 The e2e suite can be executed by running `nx e2e ng-blog-e2e:e2e --watch`
 
 This command will start the client but the api must be started separately.
+
+
+## Running lint
+Lint can be executed for all projects by running `nx run-many --all --target=lint`
