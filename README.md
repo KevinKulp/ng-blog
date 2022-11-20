@@ -25,3 +25,4 @@ When the api runs in production mode `/environments/environment.ts` is replaced 
 ## E2E
 The e2e suite can be executed by running `nx e2e ng-blog-e2e:e2e --watch`
 
+This command will start the client but the api must be started separately.
