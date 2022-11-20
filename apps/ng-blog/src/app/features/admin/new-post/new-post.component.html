@@ -1,0 +1,52 @@
+<div *ngIf="!preview">
+  <div [formGroup]="presenter.newPost" class="new-post-container">
+    <input type="text" class="hidden-input title" formControlName="title" placeholder="Post title" />
+    <input type="text" class="hidden-input" formControlName="permalink" placeholder="some-link" />
+    <input type="date" class="hidden-input" formControlName="date" />
+    <input type="text" class="hidden-input" formControlName="tags" placeholder="tag1, tag2, tag3" />
+
+    <div *ngFor="let content of presenter.postBody.controls; let i = index" [formGroup]="presenter.getContentGroup(i)">
+      <p>Content {{ i + 1 }}</p>
+      <input type="button" value="Delete content" *ngIf="i != 0" (click)="presenter.removeContent(i)" />
+      <ng-container [ngSwitch]="content.value.type">
+        <div *ngSwitchCase="ContentType.TEXT">
+          <textarea class="hidden-textarea" formControlName="text" placeholder="Text content" (keydown)="expandTextarea($event)">
+          </textarea>
+        </div>
+        <div *ngSwitchCase="ContentType.HEADER">
+          <input class="hidden-input header" formControlName="text" placeholder="Header text" />
+          <input class="hidden-input" formControlName="permalink" placeholder="some-link" />
+        </div>
+        <div *ngSwitchCase="ContentType.SUBHEADER">
+          <input class="hidden-input subheader" formControlName="text" placeholder="Subheader text" />
+          <input class="hidden-input" formControlName="permalink" placeholder="some-link" />
+        </div>
+        <div *ngSwitchCase="ContentType.IMAGE">
+          <input class="hidden-input" formControlName="url" placeholder="Image url" />
+          <input class="hidden-input" formControlName="alt" placeholder="Alt text" />
+          <input class="hidden-input" formControlName="caption" placeholder="Caption text" />
+        </div>
+        <div *ngSwitchCase="ContentType.CODE">
+          <textarea class="hidden-textarea" formControlName="code" placeholder="Text content" (keydown)="expandTextarea($event)">
+          </textarea>
+        </div>
+      </ng-container>
+
+
+      <select [formControl]="newContentControl">
+        <option [value]="ContentType.TEXT">Text</option>
+        <option [value]="ContentType.HEADER">Header</option>
+        <option [value]="ContentType.SUBHEADER">Subheader</option>
+        <option [value]="ContentType.IMAGE">Image</option>
+        <option [value]="ContentType.CODE">Code</option>
+      </select>
+      <input type="button" value="Add content" (click)="addContent(i + 1)" />
+    </div>
+  </div>
+</div>
+<div *ngIf="preview">
+  <app-single-post-ui [post]="previewPost"></app-single-post-ui>
+</div>
+
+<input type="button" value="Print post" (click)="printPost()"/>
+<input type="button" value="Toggle preview" (click)="togglePreview()"/>

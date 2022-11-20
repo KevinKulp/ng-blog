@@ -1,0 +1,39 @@
+.default-template-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0px 20px;
+  max-width: 1800px;
+  margin: auto;
+
+  .hide-content {
+    visibility: hidden;
+    height: 0px;
+  }
+
+  .default-template-header {
+    flex: 0;
+  }
+
+  .default-template-main {
+    flex: 1 0 auto;
+    max-width: 648px;
+    margin: auto;
+    width: 100%;
+  }
+
+  .default-template-footer {
+    flex-shrink: 0;
+    margin-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .default-template-loading {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+

@@ -1,0 +1,29 @@
+<article *ngIf="post" class="single-post">
+  <h2 class="post-title" *ngIf="preview"><a [routerLink]="'/' + post.permalink" class="header-link">{{ post.title }}</a></h2>
+  <h2 class="post-title" *ngIf="!preview">{{ post.title }}</h2>
+  <small class="post-subtitle">{{ post.date | date }}<span *ngFor="let tag of post.tags"> · {{ tag }}</span></small>
+  <ng-container *ngIf="!preview; else previewContent">
+    <ng-container *ngFor="let content of post.body">
+      <ng-container [ngSwitch]="content.type">
+        <p *ngSwitchCase="ContentType.TEXT" [innerHTML]="getTextContentHtml(content)" class="text-content"></p>
+        <figure *ngSwitchCase="ContentType.IMAGE" class="image-content">
+          <img [src]="getImageContent(content).url" [attr.alt]="getImageContent(content).alt">
+          <figcaption>{{ getImageContent(content).caption }}</figcaption>
+        </figure>
+        <div *ngSwitchCase="ContentType.HEADER" class="header-content" [id]="getHeaderContent(content).permalink">
+          <h3><a [routerLink]="[post.permalink]" [fragment]="getHeaderContent(content).permalink"><i class="fa fa-link"></i>{{ getHeaderContent(content).text }}</a></h3>
+        </div>
+        <div *ngSwitchCase="ContentType.SUBHEADER" class="header-content" [id]="getSubheaderContent(content).permalink">
+          <h4><a [routerLink]="[post.permalink]" [fragment]="getSubheaderContent(content).permalink"><i class="fa fa-link"></i>{{ getSubheaderContent(content).text }}</a></h4>
+        </div>
+        <div *ngSwitchCase="ContentType.CODE" class="code-content">
+          <p *ngFor="let line of getCodeContent(content).code; let i = index"><span class="code-line-number">{{ i+1 }}: </span>{{ line }}</p>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+  <ng-template #previewContent>
+    <p>{{ post.body[0].text | slice:0:300 }}<span *ngIf="post.body[0].text.length > 300">...</span></p>
+    <app-link [internalLink]="'/' + post.permalink">Continue reading</app-link>
+  </ng-template>
+</article>

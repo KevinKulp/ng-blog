@@ -1,0 +1,14 @@
+<ng-container *ngFor="let post of posts | slice:(page - 1) * PAGE_LENGTH:page * PAGE_LENGTH; let i=index">
+  <app-single-post-ui [post]="post" [preview]="true"></app-single-post-ui>
+  <br/>
+</ng-container>
+<br/>
+<div class="pagination">
+  <app-link internalLink="/page/{{ page - 1 }}" *ngIf="page > 1">Previous</app-link>
+  <ng-container *ngFor="let pageNumber of pageNumbers">
+    <app-link internalLink="/page/{{ pageNumber }}" *ngIf="pageNumber !== page && pageNumber !== -1">{{ pageNumber }}</app-link>
+    <span *ngIf="pageNumber === page">{{ pageNumber }}</span>
+    <span *ngIf="pageNumber === -1">...</span>
+  </ng-container>
+  <app-link internalLink="/page/{{ page + 1 }}" *ngIf="page < totalPages">Next</app-link>
+</div>

@@ -1,0 +1,14 @@
+<div class="default-template-container">
+  <header class="default-template-header" [ngClass]="{ 'hide-content': (showSpinner$ | async) === true }">
+    <app-default-header-ui></app-default-header-ui>
+  </header>
+  <main class="default-template-main" [ngClass]="{ 'hide-content': (showSpinner$ | async) === true }">
+    <router-outlet></router-outlet>
+  </main>
+  <footer class="default-template-footer" [ngClass]="{ 'hide-content': (showSpinner$ | async) === true }">
+    <app-default-footer-ui></app-default-footer-ui>
+  </footer>
+  <div class="default-template-loading" *ngIf="(showSpinner$ | async) === true">
+    <app-loading-indicator></app-loading-indicator>
+  </div>
+</div>

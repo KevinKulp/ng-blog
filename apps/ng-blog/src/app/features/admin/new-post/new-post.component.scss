@@ -1,0 +1,31 @@
+.new-post-container {
+  margin-top: 20px;
+
+  .hidden-input {
+    border: none;
+    width: 100%;
+
+    &.title {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    &.header {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    &.subheader {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  }
+
+  .hidden-textarea {
+    border: none;
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+    font-size: 1rem;
+  }
+}

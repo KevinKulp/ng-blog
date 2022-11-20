@@ -1,0 +1,9 @@
+.app-link {
+  color: #03a9f4;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+
+  &:hover {
+    text-decoration-thickness: 3px;
+  }
+}

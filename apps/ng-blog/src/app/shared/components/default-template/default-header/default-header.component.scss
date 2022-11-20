@@ -1,0 +1,51 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center;
+
+  a {
+    color: black;
+    transition: color .2s ease-in-out;
+    text-decoration: none;
+
+    &:hover {
+      color: #03a9f4;
+    }
+  }
+
+  .hidden-button {
+    visibility: hidden;
+  }
+
+  .avatar {
+    display: flex;
+    flex-direction: row;
+
+    img {
+      border-radius: 50%;
+    }
+
+    .avatar-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 10px;
+
+      .avatar-name {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .avatar-location {
+        font-size: .7rem;
+
+        span {
+          font-size: .8rem;
+          font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+          vertical-align: bottom;
+        }
+      }
+    }
+  }
+}

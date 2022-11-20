@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body, html {
+  height: 100%;
+}
+
+h1 {
+  font-weight: 800;
+}
+
+*:focus-visible {
+  outline: 2px dashed #03a9f4;
+}

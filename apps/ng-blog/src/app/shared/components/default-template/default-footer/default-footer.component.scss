@@ -1,0 +1,12 @@
+.default-footer-text {
+  float: right;
+
+  a {
+    color: #03a9f4;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
